@@ -29,5 +29,5 @@ shadow_enabled = true
 [node name="CameraPivot" type="Position3D" parent="."]
 
 [node name="Camera" type="Camera" parent="CameraPivot"]
-transform = Transform( 0.992612, -0.121332, 4.62221e-10, 0.00655304, 0.05361, 0.998541, -0.121155, -0.991163, 0.0540091, 0, 1.88774, -0.0178318 )
+transform = Transform( 0.992612, -0.121332, -1.09962e-08, 0.0697025, 0.570233, 0.818521, -0.0993128, -0.812474, 0.574477, 0, 3.47686, 2.13806 )
 fov = 129.375
