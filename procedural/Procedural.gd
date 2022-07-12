@@ -4,6 +4,12 @@ extends Spatial
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	MultiMeshInstance
+	var myMesh = MeshInstance.new()
+	myMesh.mesh = CubeMesh.new()
+	add_child(myMesh)
+
+func _ready_surface():
 	var st = SurfaceTool.new()
 
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
