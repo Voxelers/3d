@@ -4,7 +4,6 @@ extends Spatial
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	MultiMeshInstance
 	var myMesh = MeshInstance.new()
 	myMesh.mesh = CubeMesh.new()
 	add_child(myMesh)
