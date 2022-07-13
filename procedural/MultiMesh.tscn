@@ -14,6 +14,7 @@ size = Vector2( 200, 200 )
 [node name="Spatial" type="Spatial"]
 
 [node name="ball" type="MeshInstance" parent="."]
+visible = false
 mesh = SubResource( 1 )
 material/0 = null
 
