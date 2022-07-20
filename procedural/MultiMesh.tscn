@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://MultiMeshInstance.gd" type="Script" id=1]
 
@@ -14,6 +14,14 @@ transform_array = PoolVector3Array( -1.47137, -0.083463, 0.0488838, -0.0858039, 
 radius = 0.2
 height = 0.4
 radial_segments = 65
+
+[sub_resource type="SpatialMaterial" id=9]
+albedo_color = Color( 1, 0, 0, 1 )
+emission_enabled = true
+emission = Color( 1, 0, 0, 1 )
+emission_energy = 6.8
+emission_operator = 0
+emission_on_uv2 = false
 
 [sub_resource type="SphereShape" id=8]
 radius = 0.2
@@ -46,7 +54,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.99834, -10.4135 )
 [node name="MeshInstance" type="MeshInstance" parent="MultiMeshInstance/Ball"]
 mesh = SubResource( 7 )
 skeleton = NodePath("../../../..")
-material/0 = null
+material/0 = SubResource( 9 )
 
 [node name="CollisionShape" type="CollisionShape" parent="MultiMeshInstance/Ball"]
 shape = SubResource( 8 )
@@ -67,7 +75,7 @@ shape = SubResource( 6 )
 
 [node name="Camera" type="Camera" parent="RigidBody"]
 transform = Transform( 1, 0, 0, 0, 0.0876251, 0.996154, 0, -0.996154, 0.0876251, 0, 16, 0 )
+current = true
 
 [node name="Camera" type="Camera" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.60747, 7.62354 )
-current = true
