@@ -52,11 +52,29 @@ bones/65/rotation = Quaternion(-0.310313, -0.116232, 0.0337694, 0.942897)
 bones/66/rotation = Quaternion(0.514524, -0.0119679, -0.0630242, 0.855073)
 bones/67/rotation = Quaternion(0.606396, 0.0353103, -0.0091258, 0.794326)
 
+[node name="Camera3D" type="Camera3D" parent="Armature" index="1"]
+transform = Transform3D(-99.9943, -1.06637, 1.94639e-08, -0.417366, 39.1367, -92.0225, 0.9813, -92.0173, -39.139, 0, -165.161, -216.203)
+
 [node name="Camera3d" type="Camera3D" parent="." index="3"]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 3, 1, 5)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="." index="4"]
+[node name="Floor" type="CSGBox3D" parent="." index="4"]
 size = Vector3(40, 0.1, 40)
 material = SubResource("StandardMaterial3D_rx4ln")
+
+[node name="Limit1" type="CSGCylinder3D" parent="Floor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 1, 19)
+
+[node name="Liimit2" type="CSGCylinder3D" parent="Floor" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1, 19)
+
+[node name="Limit3" type="CSGCylinder3D" parent="Floor" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 1, -19)
+
+[node name="Limit4" type="CSGCylinder3D" parent="Floor" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 1, -19)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." index="5"]
+size = Vector3(40, 0.2, 1)
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

@@ -38,4 +38,8 @@ func _input(event):
 		if ! $AnimationPlayer.is_playing():
 			backwards = true
 			$AnimationPlayer.play('Armature|mixamocom|Layer0', -1, -2, true)
+	elif Input.is_action_pressed('ui_right'):
+		$Armature.rotate_y(deg_to_rad(-90))
+	elif Input.is_action_pressed('ui_left'):
+		$Armature.rotate_y(deg_to_rad(90))
 
