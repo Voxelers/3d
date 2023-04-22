@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://8pcklybsvajh"]
+
+[ext_resource type="Script" path="res://4cameras.gd" id="1_lj7hg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2jruc"]
+
+[sub_resource type="Sky" id="Sky_b8hci"]
+sky_material = SubResource("ProceduralSkyMaterial_2jruc")
+
+[sub_resource type="Environment" id="Environment_blav2"]
+background_mode = 2
+sky = SubResource("Sky_b8hci")
+
+[node name="Mundo" type="Node3D"]
+script = ExtResource("1_lj7hg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.903335, -0.346134, 0.253331, 0, 0.590606, 0.80696, -0.428935, 0.728956, -0.533515, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Suelo" type="CSGBox3D" parent="."]
+transform = Transform3D(0.999995, 0, 0.0032114, 0, 1, 0, -0.0032114, 0, 0.999995, 0, 0, 0)
+size = Vector3(50, 1, 50)
+
+[node name="Pared" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+size = Vector3(1, 10, 50)
+
+[node name="Pared2" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37722e-08, 0, 1, 0, 1, 0, -1, 0, -4.37722e-08, 0, 5, 0)
+size = Vector3(1, 10, 50)
+
+[node name="cameras" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="room1" type="Node3D" parent="."]
+
+[node name="camera1" type="Camera3D" parent="room1"]
+transform = Transform3D(-0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, -0.642788, 48, 20, -48)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="room1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 5, -10)
+radius = 2.0
+height = 10.0
+
+[node name="room2" type="Node3D" parent="."]
+
+[node name="camera2" type="Camera3D" parent="room2"]
+transform = Transform3D(0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, 0.642788, -48, 20, 48)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="room2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.5, 10)
+size = Vector3(5, 5, 5)
+
+[node name="room3" type="Node3D" parent="."]
+
+[node name="camera3" type="Camera3D" parent="room3"]
+transform = Transform3D(-0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, -0.642788, -48, 20, -48)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="room3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 5, -10)
+inner_radius = 3.0
+outer_radius = 5.0
+sides = 20
+
+[node name="room4" type="Node3D" parent="."]
+
+[node name="camera4" type="Camera3D" parent="room4"]
+transform = Transform3D(0.642788, 0, 0.766044, 0, 1, 0, -0.766044, 0, 0.642788, 48, 20, 48)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="room4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 3, 10)
+radius = 3.0
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 204.0
+offset_bottom = 202.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer2/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8461, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer2/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.16954, 48.5319)
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+offset_left = 204.0
+offset_right = 404.0
+offset_bottom = 200.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(200, 200)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14.8461, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(0.986072, -0.166321, -1.76668e-10, 0.114921, 0.681334, 0.722895, -0.120233, -0.712826, 0.690958, 0, 29.5615, 32.3326)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_blav2")
+
+[connection signal="change_camera" from="." to="." method="_on_change_camera"]
