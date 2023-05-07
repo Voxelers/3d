@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqxwr4m4ijhqr"]
+[gd_scene load_steps=7 format=3 uid="uid://cqxwr4m4ijhqr"]
 
 [ext_resource type="PackedScene" uid="uid://mssub2es4xri" path="res://cubeArmature.glb" id="1_c263u"]
 [ext_resource type="Script" path="res://cubeAnimation.gd" id="1_fwftg"]
+[ext_resource type="PackedScene" uid="uid://g0vd0sfg8b1m" path="res://metaballsBasicAnim.glb" id="3_4fiqe"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_en2oo"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -30,3 +31,8 @@ shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93938, 1.70468, 5.17482)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+
+[node name="metaballsBasicAnim" parent="RigidBody3D" instance=ExtResource("3_4fiqe")]
+transform = Transform3D(0.763627, -0.593748, 0.253647, -0.645658, -0.702233, 0.299991, 0, -0.392851, -0.919602, 9.32162, 0, -6.15322)
