@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqxwr4m4ijhqr"]
+
+[ext_resource type="PackedScene" uid="uid://mssub2es4xri" path="res://cubeArmature.glb" id="1_c263u"]
+[ext_resource type="Script" path="res://cubeAnimation.gd" id="1_fwftg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_en2oo"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_ju7st"]
+sky_material = SubResource("ProceduralSkyMaterial_en2oo")
+
+[sub_resource type="Environment" id="Environment_opghh"]
+background_mode = 2
+sky = SubResource("Sky_ju7st")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="cubeAnimation" type="Node3D"]
+script = ExtResource("1_fwftg")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_opghh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.026168, 0.499315, 0, 0.99863, 0.052336, -0.5, 0.0453243, -0.864838, 0, 0, 0)
+shadow_enabled = true
+
+[node name="cubeArmature" parent="." instance=ExtResource("1_c263u")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.93938, 1.70468, 5.17482)

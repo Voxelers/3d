@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwa5ksq6hrscn"]
+
+[ext_resource type="PackedScene" uid="uid://b0qcpieq1qjsq" path="res://ballBlender.glb" id="1_q2ogq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wvi1j"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_0wo2d"]
+sky_material = SubResource("ProceduralSkyMaterial_wvi1j")
+
+[sub_resource type="Environment" id="Environment_me1ks"]
+background_mode = 2
+sky = SubResource("Sky_0wo2d")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_me1ks")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.026168, 0.499315, 0, 0.99863, 0.052336, -0.5, 0.0453243, -0.864838, 0, 0, 0)
+shadow_enabled = true
+
+[node name="ballBlender" parent="." instance=ExtResource("1_q2ogq")]
+transform = Transform3D(0.857384, 0, 0.707107, 0, 1.15255, 0, -0.857384, 0, 0.707107, -0.189972, 0, 0.212431)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, 1.13512, 0.289662, -2.32688)

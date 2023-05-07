@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://jr7ml2d07wfv"]
+
+[ext_resource type="PackedScene" uid="uid://mssub2es4xri" path="res://cubeArmature.glb" id="1_rhkty"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qif16"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_yq3ot"]
+sky_material = SubResource("ProceduralSkyMaterial_qif16")
+
+[sub_resource type="Environment" id="Environment_djui3"]
+background_mode = 2
+sky = SubResource("Sky_yq3ot")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="cubeArmature" instance=ExtResource("1_rhkty")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." index="0"]
+environment = SubResource("Environment_djui3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." index="1"]
+transform = Transform3D(-0.866025, -0.026168, 0.499315, 0, 0.99863, 0.052336, -0.5, 0.0453243, -0.864838, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/1/rotation = Quaternion(-0.215957, 0.389184, 0.859398, 0.251661)
+bones/2/rotation = Quaternion(-0.827412, -0.189936, -0.292777, 0.439995)
+
+[node name="AnimationPlayer" parent="." index="3"]
+autoplay = "ArmatureAction"
